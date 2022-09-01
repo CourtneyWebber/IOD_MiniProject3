@@ -44,7 +44,8 @@ Movie.createDb = () => {
             console.log("Database and table(s) created");
         }
     });
-    insertMovies();
+    insertMovies(); //since sql.query is not synchronous, this function is often called before the db/tables have finished creating. 
+    //should probably happen inside the callback after line 44 to prevent this
 };
 
 Movie.getAll = (result) => {
